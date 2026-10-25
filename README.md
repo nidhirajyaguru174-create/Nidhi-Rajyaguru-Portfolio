@@ -1,106 +1,52 @@
 # Nidhi Rajyaguru — Personal Portfolio
 
-A modern, responsive personal portfolio website for Nidhi Chandrakant Rajyaguru, a Computer Engineering student. Built with Next.js, React, TypeScript, and Tailwind CSS.
+A responsive portfolio built with Next.js 16.3.7 (App Router), React 19, TypeScript and Tailwind CSS v4.
 
-## Overview
+The interface adapts the supplied Figma desktop and mobile design: dark surfaces, coloured gradient glows, locally hosted display fonts, metallic buttons, 3D decorative illustrations, a scrolling skills ribbon and rounded project cards.
 
-This portfolio showcases skills, projects, education, and contact information in a clean, minimal design with a warm ivory and deep plum color palette.
+## Content and structure
 
-## Key Sections
+- `lib/data.ts`: original personal information, biography, skills, all four projects, education, achievement message and links.
+- `app/page.tsx`: Home, About, Skills, Projects, Education, Achievements and Contact, with Navbar and Footer.
+- `app/layout.tsx`: metadata, locally hosted fonts and skip navigation.
+- `app/globals.css`: shared theme, responsive layouts, interaction states and reduced-motion support.
+- `components/`: individual sections, reusable Section wrapper and existing social icons.
+- `public/figma/`: original decorative Figma assets and source notes.
+- `public/fonts/`: local fonts, source notes and supplied open-font licenses.
 
-- **Home** — Hero introduction with call-to-action buttons
-- **About** — Personal bio and highlight cards
-- **Skills** — Categorized technology and tool proficiencies
-- **Projects** — Featured project showcase with tech stack tags
-- **Education** — Academic background and timeline
-- **Achievements & Certifications** — Certifications and accomplishments
-- **Contact** — Contact information and message form
-- **Footer** — Social links and copyright
+Portfolio projects: SkillFull Frontend, QuizChampz, AI Bug Detective and Personal Portfolio. SkillFull is a learning app with frontend UI/UX design and app screen contributions; no screenshot or project links are currently available. Project visuals are explicitly labelled placeholders; they do not pretend to be project screenshots. About statistics are calculated from the content data.
 
-## Tech Stack
+## Local development
 
-- **Framework:** Next.js 16 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS v4
-- **Icons:** Lucide React
-- **Fonts:** Geist Sans & Geist Mono (via next/font)
-- **Package Manager:** npm
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18.17 or later
-- npm (comes with Node.js)
-
-### Installation
+Use Node.js 20.9 or newer and npm.
 
 ```bash
 npm install
-```
-
-### Development
-
-```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open http://localhost:3000. In Windows PowerShell environments that block npm.ps1, use `npm.cmd` instead of `npm`.
 
-### Production Build
+## Validation and production preview
 
 ```bash
+npm run lint
 npm run build
 npm start
 ```
 
-### Linting
+Stop the preview server before rebuilding. Fonts and illustrations are served locally; the build does not need Google Fonts access.
 
-```bash
-npm run lint
-```
+## Responsive behaviour
 
-## Project Structure
+Desktop uses a split hero and About layout. Mobile places the hero illustration first and the About text before its illustration, following the Figma mobile composition. Tablet layouts adapt the same sections. The mobile menu supports selection, Escape and keyboard focus. Motion respects the operating system's reduced-motion setting.
 
-```
-app/
-  layout.tsx          — Root layout with metadata and fonts
-  page.tsx            — Main page composing all sections
-  globals.css         — Tailwind CSS with custom theme colors
-components/
-  Navbar.tsx          — Sticky navigation with mobile menu
-  Hero.tsx            — Hero section with CTAs and social links
-  About.tsx           — About section with bio and highlights
-  Skills.tsx          — Skills grid with categorized tags
-  Projects.tsx        — Project cards in responsive grid
-  Education.tsx       — Education timeline
-  Achievements.tsx    — Achievements & certifications section
-  Contact.tsx         — Contact info and UI-only form
-  Footer.tsx          — Footer with social links
-  Section.tsx         — Reusable section wrapper component
-  SocialIcons.tsx     — Custom GitHub and LinkedIn SVG icons
-lib/
-  data.ts             — All portfolio content (single source of truth)
-public/
-  favicon.ico         — Site favicon
-```
+## Contact and missing links
 
-## Customization
+The contact form is a preview only: it validates fields but never sends or stores messages. Submitting displays an explicit not-sent notice and an email link. Direct email, GitHub and LinkedIn anchors use the existing data.
 
-All personal information, projects, skills, and education details are managed in a single file:
+No resume or project demo URLs have been invented. A resume link is shown only when supplied in `lib/data.ts`; demo links appear only when populated with HTTP URLs.
 
-```
-lib/data.ts
-```
+## Deployment
 
-Edit this file to update content across the entire site without modifying individual components.
-
-## Future Improvements
-
-- Connect contact form to a backend service (e.g., EmailJS, Formspree)
-- Add individual project detail pages
-- Add a blog section
-- Implement dark mode toggle
-- Add scroll-triggered animations
-- Add a downloadable resume link
-- Implement SEO optimization with dynamic meta tags
+The project retains its existing Next.js build and start scripts for later hosting. Before Vercel deployment, verify the real project/social destinations and optionally provide project screenshots, a resume and live-demo links. If message delivery is required, connect and configure an actual email service separately. No deployment has been performed.

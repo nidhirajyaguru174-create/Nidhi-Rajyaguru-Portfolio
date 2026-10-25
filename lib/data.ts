@@ -12,7 +12,7 @@ export const personalInfo = {
   email: "nidhirajyaguru174@gmail.com",
   phone: "",
   location: "Palghar, Maharashtra",
-  linkedin: "https://linkedin.com/in/nidhi-rajyaguru",
+  linkedin: "https://www.linkedin.com/in/nidhi-rajyaguru-b417723b9",
   github: "https://github.com/nidhirajyaguru174-create",
   resume: "",
   about: [
@@ -42,11 +42,11 @@ export const skills = [
 
 export const projects = [
   {
-    title: "SmartQueue",
+    title: "SkillFull Frontend",
     description:
-      "A digital queue management platform designed to simplify token generation, queue tracking, and real-time status updates.",
-    tech: ["React", "Supabase", "Tailwind CSS"],
-    github: "https://github.com/nidhirajyaguru174-create/smartqueue",
+      "A learning app where I worked on the frontend UI/UX design and app screens.",
+    tech: ["Frontend", "UI/UX Design", "App Screens"],
+    github: "",
     live: "",
   },
   {
@@ -90,6 +90,18 @@ export const education = [
 ];
 
 export const achievementsMessage = "More to come — currently building, learning, and exploring.";
+
+export const achievements = [
+  {
+    event: "AGNITIA’26",
+    title: "AGNITIA’26 — National Level Hackathon Winner",
+    achievement: "First Position — Winner",
+    eventType: "36-hour National Level Hackathon",
+    description:
+      "Achieved First Position in AGNITIA’26, a 36-hour National Level Hackathon.",
+    certificate: "/certificates/AGNITIA26_FIRST_POSITION_Nidhi_Rajyaguru.pdf",
+  },
+];
 
 export const navLinks = [
   { label: "Home", href: "#home" },

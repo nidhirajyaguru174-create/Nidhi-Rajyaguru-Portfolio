@@ -1,60 +1,31 @@
+import Image from "next/image";
 import { Code2, Palette, Sparkles } from "lucide-react";
 import Section from "./Section";
-import { personalInfo } from "@/lib/data";
+import { personalInfo, projects, skills } from "@/lib/data";
 
 const highlights = [
-  {
-    icon: Code2,
-    title: "Frontend Development",
-    description: "Building responsive, user-friendly interfaces with modern web technologies.",
-  },
-  {
-    icon: Palette,
-    title: "UI/UX Design",
-    description: "Creating thoughtful, clean designs that prioritize the user experience.",
-  },
-  {
-    icon: Sparkles,
-    title: "Practical Projects",
-    description: "Applying classroom knowledge to real-world web development projects.",
-  },
+  { icon: Code2, title: "Frontend Development", description: "Building responsive, user-friendly interfaces with modern web technologies." },
+  { icon: Palette, title: "UI/UX Design", description: "Creating thoughtful, clean designs that prioritize the user experience." },
+  { icon: Sparkles, title: "Practical Projects", description: "Applying classroom knowledge to real-world web development projects." },
 ];
 
 export default function About() {
   return (
-    <Section id="about" title="About">
-      <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
-        {/* Bio */}
-        <div className="flex-1 space-y-4">
-          {personalInfo.about.map((paragraph, i) => (
-            <p key={i} className="text-base leading-relaxed text-warm-gray sm:text-lg">
-              {paragraph}
-            </p>
-          ))}
+    <Section id="about" title="About Me">
+      <div className="about-layout">
+        <div className="about-art" aria-hidden="true">
+          {[0, 1, 2].map(i => <div key={i} className={`orbit orbit-${i}`}><Image src="/figma/orbit.svg" width={403} height={87} alt="" /></div>)}
+          <div className="about-avatar-crop"><Image src="/figma/about-avatar.png" width={529} height={529} alt="" sizes="(max-width: 700px) 270px, 450px" /></div>
+          <div className="about-star"><Image src="/figma/star.svg" width={61} height={61} alt="" /></div>
         </div>
-
-        {/* Highlight cards */}
-        <div className="flex flex-col gap-4 lg:w-80">
-          {highlights.map((item) => (
-            <div
-              key={item.title}
-              className="flex items-start gap-3 rounded-xl border border-warm-border bg-white p-4 sm:gap-4 sm:p-5"
-            >
-              <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-rose-light/50 sm:h-10 sm:w-10">
-                <item.icon size={18} className="text-terracotta" />
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold text-plum">
-                  {item.title}
-                </h3>
-                <p className="mt-1 text-sm leading-relaxed text-warm-gray">
-                  {item.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <div className="about-copy">{personalInfo.about.map(p => <p key={p}>{p}</p>)}</div>
       </div>
+      <div className="about-highlights">{highlights.map(item => <div key={item.title}><item.icon size={20} /><h3>{item.title}</h3><p>{item.description}</p></div>)}</div>
+      <dl className="stats">
+        <div><dt>Portfolio projects</dt><dd>{String(projects.length).padStart(2, "0")}</dd></div>
+        <div><dt>Skills & technologies</dt><dd>{skills.reduce((count, group) => count + group.items.length, 0)}</dd></div>
+        <div><dt>Areas of learning</dt><dd>{String(skills.length).padStart(2, "0")}</dd></div>
+      </dl>
     </Section>
   );
 }
